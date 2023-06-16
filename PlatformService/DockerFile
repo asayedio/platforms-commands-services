@@ -1,0 +1,26 @@
+# Overall
+# This Dockerfile sets up a multi-stage build process where the first stage builds the application, and the second stage creates a lightweight image containing only the necessary files to run the application.
+# This approach helps reduce the size of the final Docker image.
+# Overall
+
+# Pulles down base image for the build environment. It uses the .NET SDK version 7.0, which provides the necessary tools for building and running .NET applications.
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+# Sets the working directory inside the container to /app. This is where the application files will be copied and built.
+WORKDIR /app
+
+# Copies the project files (.csproj) to the current working directory in the container. This step is done separately from copying the rest of the files to take advantage of Docker's layer caching. If the project files haven't changed, Docker can reuse the previous layers without re-restoring the dependencies.
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copies the entire current directory (excluding the project files) to the current working directory in the container. This includes the application source code, configuration files, and any other necessary files.
+COPY . ./
+# Builds the .NET project in release mode (-c Release) and publishes the output to the out directory. The published output contains the compiled application along with any required dependencies.
+RUN dotnet publish -c Release -o out
+
+# Specifies the base image for the final image that will be used to run the application. Again, it uses the .NET SDK version 7.0.
+FROM mcr.microsoft.com/dotnet/sdk:6.0
+WORKDIR /app
+# Copies the output files from the build environment (previous stage) to the current working directory in the final image. It uses the --from=build-env flag to reference the build environment stage.
+COPY --from=build-env /app/out .
+# Specifies the command to run when the container starts. It uses the dotnet command to execute the PlatformService.dll file, which is the entry point of the .NET application.
+ENTRYPOINT [ "dotnet", "PlatformService.dll" ]
