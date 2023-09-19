@@ -83,3 +83,8 @@ D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\refint\PlatformServi
 D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\PlatformService.pdb
 D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\PlatformService.genruntimeconfig.cache
 D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\ref\PlatformService.dll
+D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\staticwebassets\msbuild.PlatformService.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\staticwebassets\msbuild.build.PlatformService.props
+D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.PlatformService.props
+D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.PlatformService.props
+D:\Materials\Microservices\PlatformService\obj\Debug\net6.0\staticwebassets.pack.json
