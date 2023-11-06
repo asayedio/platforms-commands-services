@@ -22,5 +22,5 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0
 WORKDIR /app
 # Copies the output files from the build environment (previous stage) to the current working directory in the final image. It uses the --from=build-env flag to reference the build environment stage.
 COPY --from=build-env /app/out .
-# Specifies the command to run when the container starts. It uses the dotnet command to execute the PlatformService.dll file, which is the entry point of the .NET application.
-ENTRYPOINT [ "dotnet", "PlatformService.dll" ]
+# Specifies the command to run when the container starts. It uses the dotnet command to execute the CommandsService.dll file, which is the entry point of the .NET application.
+ENTRYPOINT [ "dotnet", "CommandsService.dll" ]
