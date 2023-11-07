@@ -28,7 +28,7 @@ namespace PlatformService.SyncDataServices.Http
             );
 
             var response = await _httpClient.PostAsync(
-                $"{_configuration["CommandService"]}/api/c/platforms",
+                $"{_configuration["CommandService"]}",
                 httpContent
             );
 
